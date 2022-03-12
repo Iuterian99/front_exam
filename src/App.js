@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Components
 import TopHeader from "./components/navbar/navbar";
 import AllBuildings from "./components/AllBuildings/allBuildings";
-// import Complexes from "./components/Complexes/complexes";
 
 function App() {
   return (
@@ -15,12 +14,9 @@ function App() {
       </nav>
       <main className="main_part">
         <div className="container main_container">
-          <h1 className="text-light text-center pt-5">
-            All houses consist of three rooms
+          <h1 className="text-danger text-center pt-3">
+            All houses consist of three rooms🏡
           </h1>
-          <h2 className="text-light text-center mb-5">
-            Choose a house by filtering🏡
-          </h2>
           <div className="options">
             <AllBuildings />
           </div>

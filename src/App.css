@@ -1,6 +1,5 @@
 .main_container {
   background-color: #116c88e5;
-  height: 485px;
 }
 
 .main_part {
@@ -37,4 +36,20 @@ body {
   width: 1140px;
   padding: 0 20px;
   margin: 0 auto;
+}
+.none {
+  display: none;
+}
+.avatar {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  padding-bottom: 50px;
 }
