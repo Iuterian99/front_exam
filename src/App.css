@@ -40,16 +40,24 @@ body {
 .none {
   display: none;
 }
+
+.bank-info {
+  display: none;
+}
+
 .avatar {
   width: 300px;
   height: 300px;
   object-fit: cover;
 }
 .active {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-left: 100px;
   flex-direction: column;
+  margin-top: 20px;
+  padding-bottom: 50px;
+}
+
+.active-bank {
   margin-top: 20px;
   padding-bottom: 50px;
 }

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "../../App.css";
 
 import { useEffect, useState, useRef } from "react";
@@ -10,6 +9,7 @@ function Buildings() {
   const [banks, setBanks] = useState([]);
   const img = useRef(null);
   const wrapper = useRef(null);
+  const bankInfo = useRef(null);
   const companyName = useRef(null);
   const complexName = useRef(null);
   const location = useRef(null);
@@ -112,6 +112,8 @@ function Buildings() {
       .then((res) => res.json())
       .then((data) => {
         setBanks(data);
+        bankInfo.current.classList.add("active-bank");
+        bankInfo.current.classList.remove("bank-info");
       })
       .then((err) => console.log(err));
   };
@@ -200,36 +202,95 @@ function Buildings() {
         </div>
       </div>
       <div className="none" ref={wrapper}>
-        <img ref={img} className="avatar" />
-        <div className="div d-flex align-items-center mt-2">
-          <h2 className="fw-bold">Quruvchi Tashkilot:</h2>
-          <h3 className="ms-2" ref={companyName}></h3>
-        </div>
-        <div className="div d-flex align-items-center mt-2">
-          <h3 className="fw-bold">Tashkilot Kompleksi:</h3>
-          <h4 className="ms-2" ref={complexName}></h4>
-        </div>
-        <div className="div d-flex align-items-center mt-2">
-          <h4 className="fw-bold">Joylashuvi:</h4>
-          <h5 className="ms-2" ref={location}></h5>
-        </div>
-        <div className="div d-flex align-items-center mt-2">
-          <h4 className="fw-bold">Etaji:</h4>
-          <h5 className="ms-2" ref={floorNumber}></h5>
-        </div>
-        <div className="div d-flex align-items-center mt-2">
-          <h4 className="fw-bold">1 m^2 Narxi:</h4>
-          <h5 className="ms-2" ref={housePrice}></h5>
-          <h4 className="fw-bold">$</h4>
-        </div>
-        <div className="div d-flex align-items-center mt-2">
-          <h4 className="fw-bold">Boshlangan sanasi:</h4>
-          <h5 className="ms-2" ref={houseStartedAt}></h5>
-        </div>
-        <div className="div d-flex align-items-center mt-2">
-          <h4 className="fw-bold">xajmi:</h4>
-          <h5 className="ms-2" ref={houseSize}></h5>
-          <h5 className="fw-bold ms-1">m^2</h5>
+        <div className="row">
+          <div className="col-6">
+            <img ref={img} className="avatar" />
+            <div className="div d-flex align-items-center mt-2">
+              <h2 className="fw-bold">Quruvchi Tashkilot:</h2>
+              <h3 className="ms-2" ref={companyName}></h3>
+            </div>
+            <div className="div d-flex align-items-center mt-2">
+              <h3 className="fw-bold">Tashkilot Kompleksi:</h3>
+              <h4 className="ms-2" ref={complexName}></h4>
+            </div>
+            <div className="div d-flex align-items-center mt-2">
+              <h4 className="fw-bold">Joylashuvi:</h4>
+              <h5 className="ms-2" ref={location}></h5>
+            </div>
+            <div className="div d-flex align-items-center mt-2">
+              <h4 className="fw-bold">Etaji:</h4>
+              <h5 className="ms-2" ref={floorNumber}></h5>
+            </div>
+            <div className="div d-flex align-items-center mt-2">
+              <h4 className="fw-bold">1 m^2 Narxi:</h4>
+              <h5 className="ms-2" ref={housePrice}></h5>
+              <h4 className="fw-bold">$</h4>
+            </div>
+            <div className="div d-flex align-items-center mt-2">
+              <h4 className="fw-bold">Boshlangan sanasi:</h4>
+              <h5 className="ms-2" ref={houseStartedAt}></h5>
+            </div>
+            <div className="div d-flex align-items-center mt-2">
+              <h4 className="fw-bold">xajmi:</h4>
+              <h5 className="ms-2" ref={houseSize}></h5>
+              <h5 className="fw-bold ms-1">m^2</h5>
+            </div>
+          </div>
+          <div className="col-6 bank-info" ref={bankInfo}>
+            <div className="div mt-2">
+              {banks &&
+                banks.map((bank) => (
+                  <img
+                    className="ms-2"
+                    key={bank.bank_id}
+                    value={bank.bank_credit_year}
+                    src={bank.bank_image}
+                    width="300"
+                    height="300"
+                  ></img>
+                ))}
+            </div>
+            <div className="div d-flex align-items-center mt-3">
+              <h4 className="fw-bold">Tanlangan Yil:</h4>
+              {banks &&
+                banks.map((bank) => (
+                  <h5
+                    className="ms-2"
+                    key={bank.bank_id}
+                    value={bank.bank_credit_year}
+                  >
+                    {bank.bank_credit_year}
+                  </h5>
+                ))}
+            </div>
+            <div className="div d-flex align-items-center mt-2">
+              <h4 className="fw-bold">Bank Nomi:</h4>
+              {banks &&
+                banks.map((bank) => (
+                  <h5
+                    className="ms-2"
+                    key={bank.bank_id}
+                    value={bank.bank_credit_year}
+                  >
+                    {bank.bank_name}
+                  </h5>
+                ))}
+            </div>
+            <div className="div d-flex align-items-center mt-2">
+              <h4 className="fw-bold">Bank foizi:</h4>
+              {banks &&
+                banks.map((bank) => (
+                  <h5
+                    className="ms-2"
+                    key={bank.bank_id}
+                    value={bank.bank_credit_year}
+                  >
+                    {bank.bank_credit_percent}
+                  </h5>
+                ))}
+              <h5>%</h5>
+            </div>
+          </div>
         </div>
       </div>
     </>
